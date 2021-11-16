@@ -11,26 +11,27 @@ function App() {
 
   return (
     <div className="App">
-      Hello, World!
       <div className="calculator">
         <div className="display">
           <span>(0)</span> 0
         </div>
 
         <div className="operators">
-          <buton>/</buton>
-          <buton>*</buton>
-          <buton>+</buton>
-          <buton>-</buton>
+          <button>/</button>
+          <button>x</button>
+          <button>+</button>
+          <button>-</button>
 
-          <buton>DEL</buton>
+          <button>DEL</button>
         </div>
 
+        <div className="mainNums">{createNums()}</div>
+
         <div className="nums">
-          {createNums()}
-          <buton>0</buton>
-          <buton>.</buton>
-          <buton>=</buton>
+          <button>0</button>
+          <button>.</button>
+          <button>%</button>
+          <button>=</button>
         </div>
       </div>
     </div>
