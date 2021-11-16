@@ -4,7 +4,7 @@ const App = () => {
   const [cal, setCal] = useState("");
   const [result, setResult] = useState("");
 
-  const operators = ["/", "x", "+", "-", ".", "+/-"];
+  const operators = ["/", "*", "+", "-", ".", "+/-"];
 
   const updateCal = (value) => {
     //limit the operations so that you dont see more than one in a row
@@ -45,9 +45,14 @@ const App = () => {
     setCal(eval(cal.toString()));
   };
 
-  const delLast = () => {};
+  const delLast = () => {
+    const value = cal.slice(0, -1);
+    setCal(value);
+  };
 
   const allClear = () => {};
+
+  //maybe make a helper function so that the commas will show up when you enter a number like 1000000 so it'll show up as 1,000,000?
 
   return (
     <div className="App">
@@ -58,12 +63,12 @@ const App = () => {
 
         <div className="operators">
           <button onClick={() => updateCal("/")}>/</button>
-          <button onClick={() => updateCal("x")}>x</button>
+          <button onClick={() => updateCal("*")}>x</button>
           <button onClick={() => updateCal("+")}>+</button>
           <button onClick={() => updateCal("-")}>-</button>
 
           <button>AC</button>
-          <button>DEL</button>
+          <button onClick={delLast}>DEL</button>
         </div>
 
         <div className="mainNums">{createNums()}</div>
