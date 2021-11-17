@@ -57,7 +57,8 @@ const App = () => {
   };
 
   const allClear = () => {
-    setCal(" ");
+    setCal("");
+    setResult("");
   };
 
   //maybe make a helper function so that the commas will show up when you enter a number like 1000000 so it'll show up as 1,000,000?
