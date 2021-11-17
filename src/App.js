@@ -57,14 +57,14 @@ const App = () => {
   };
 
   const allClear = () => {
-    setCal("");
+    setCal(" ");
   };
 
   //maybe make a helper function so that the commas will show up when you enter a number like 1000000 so it'll show up as 1,000,000?
 
   return (
     <div className="App">
-      <div className="calculator">
+      <div className="sevulator">
         <div className="display">
           {result ? <span>({result})</span> : ""} {cal || "0"}
         </div>
@@ -79,10 +79,12 @@ const App = () => {
           <button onClick={delLast}>DEL</button>
         </div>
 
-        <div className="mainNums">{createNums()}</div>
+        <div className="mainNums">
+          {createNums()}
+          <button onClick={() => updateCal("0")}>0</button>
+        </div>
 
         <div className="nums">
-          <button onClick={() => updateCal("0")}>0</button>
           <button onClick={() => updateCal(".")}>.</button>
           <button onClick={() => updateCal("-")}>+/-</button>
 
