@@ -79,8 +79,9 @@ const App = () => {
           <button onClick={delLast}>DEL</button>
         </div>
 
-        <div className="mainNums">
-          {createNums()}
+        <div className="mainNums">{createNums()}</div>
+
+        <div className="zero">
           <button onClick={() => updateCal("0")}>0</button>
         </div>
 
