@@ -1,36 +1,39 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const [cal, setCal] = useState("");
+  const operators = ["/", "x", "+", "-", ".", "+/-"];
+
   const [result, setResult] = useState("");
+  const [cal, setCal] = useState("");
 
-  const operators = ["/", "*", "+", "-", ".", "+/-"];
-
-  const updateCal = (value) => {
+  const updateCal = (input) => {
     //limit the operations so that you dont see more than one in a row
 
-    //if the last value is an operator and cal has nothing or the value is an operator and the last value was also an operator
+    //if the last input is an operator and cal has nothing or the input is an operator and the last input was also an operator
     if (
-      (operators.includes(value) && cal === "") ||
-      (operators.includes(value) && operators.includes(cal.slice(-1)))
+      (operators.includes(input) && cal === "") ||
+      (operators.includes(input) && operators.includes(cal.slice(-1)))
     ) {
       //then empty return so it wont do anything
       return;
     }
-    setCal(cal + value);
+    //
+    setCal(cal + input);
 
     //if the last input was not an operator
-    if (!operators.includes(value)) {
+    if (!operators.includes(input)) {
       //then eval() the cal and val and make it a string so that eval works
-      setResult(eval(cal + value).toString());
+      //have to update code to not use eval()(whoops)
+      setResult(eval(cal + input).toString());
     }
   };
+
+  //add helper function for the logic of making a integer either negative or positve but we'll probably have to alter the display so that only one number shows up at a time so that way we can make whatever is on display negative or positive (*-1)
 
   const createNums = () => {
     const nums = [];
 
     for (let i = 1; i < 10; i++) {
-      //uuggghhhh needed to add the onClick to this button as well! cant believe i forgrt ),:<
       nums.push(
         <button onClick={() => updateCal(i.toString())} key={i}>
           {i}
@@ -46,11 +49,16 @@ const App = () => {
   };
 
   const delLast = () => {
-    const value = cal.slice(0, -1);
-    setCal(value);
+    if (cal === "") {
+      return;
+    }
+    const input = cal.slice(0, -1);
+    setCal(input);
   };
 
-  const allClear = () => {};
+  const allClear = () => {
+    setCal("");
+  };
 
   //maybe make a helper function so that the commas will show up when you enter a number like 1000000 so it'll show up as 1,000,000?
 
@@ -63,11 +71,11 @@ const App = () => {
 
         <div className="operators">
           <button onClick={() => updateCal("/")}>/</button>
-          <button onClick={() => updateCal("*")}>x</button>
+          <button onClick={() => updateCal("x")}>x</button>
           <button onClick={() => updateCal("+")}>+</button>
           <button onClick={() => updateCal("-")}>-</button>
 
-          <button>AC</button>
+          <button onClick={allClear}>AC</button>
           <button onClick={delLast}>DEL</button>
         </div>
 
