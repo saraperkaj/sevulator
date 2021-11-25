@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 
+//multiplication doesn't work for preview
+//preview doesn't update
+//shouldn't be able to have more than one period in the integer
+//cant use operators after equals
+//making integers positive and negative button doesn't work
+
 const App = () => {
   const operators = ["/", "x", "+", "-", ".", "+/-"];
 

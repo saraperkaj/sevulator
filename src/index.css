@@ -13,7 +13,7 @@
 }
 
 body {
-  background-color: var(--light);
+  background-color: rgb(171, 166, 166);
 }
 
 .App {
